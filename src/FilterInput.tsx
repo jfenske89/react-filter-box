@@ -28,6 +28,7 @@ export default class FilterInput extends React.Component<any,any> {
     public static defaultProps: any = {
         onBlur: ()=>{},
         onFocus: ()=>{},
+        onClick: ()=>{},
         additionalCodeMirrorOptions: {},
     };
 
@@ -124,6 +125,8 @@ export default class FilterInput extends React.Component<any,any> {
                 this.onSubmit(this.doc.getValue());                
             }
         })
+
+        this.codeMirror.on("mousedown", this.props.onClick)
     }
 
     render() {
@@ -131,6 +134,7 @@ export default class FilterInput extends React.Component<any,any> {
                 <ReactCodeMirror
                     ref={this.codeMirrorRef.bind(this) }
                     onChange={this.props.onChange}
+                    onClick={this.props.onClick}
                     options={{...this.options, ...this.props.additionalCodeMirrorOptions}}  value={this.props.value}/>
 
         );

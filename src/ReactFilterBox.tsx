@@ -22,6 +22,7 @@ export default class ReactFilterBox extends React.Component<any,any> {
         autoCompleteHandler:null,
         onBlur:()=>{},
         onFocus:()=>{},
+        onClick:()=>{},
         additionalCodeMirrorOptions: {},
     };
 
@@ -53,6 +54,10 @@ export default class ReactFilterBox extends React.Component<any,any> {
         }
 
         return this.props.onParseOk(result);
+    }
+
+    onClick() {
+        this.props.onClick();
     }
 
     onChange(query:string){
@@ -98,8 +103,9 @@ export default class ReactFilterBox extends React.Component<any,any> {
             onFocus={this.onFocus.bind(this)}
             value={this.props.query}
             needAutoCompleteValues={this.needAutoCompleteValues.bind(this) } 
-            onSubmit={this.onSubmit.bind(this)} 
+            onSubmit={this.onSubmit.bind(this)}
             onChange={this.onChange.bind(this) }
+            onClick={this.onClick.bind(this) }
             additionalCodeMirrorOptions={this.props.additionalCodeMirrorOptions}/>
         </div>
     }
