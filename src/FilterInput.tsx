@@ -28,7 +28,7 @@ export default class FilterInput extends React.Component<any,any> {
     public static defaultProps: any = {
         onBlur: ()=>{},
         onFocus: ()=>{},
-        
+        additionalCodeMirrorOptions: {},
     };
 
     constructor(props:any) {
@@ -124,7 +124,7 @@ export default class FilterInput extends React.Component<any,any> {
                 <ReactCodeMirror
                     ref={this.codeMirrorRef.bind(this) }
                     onChange={this.props.onChange}
-                    options={this.options}  value={this.props.value}/>
+                    options={{...this.options, ...this.props.additionalCodeMirrorOptions}}  value={this.props.value}/>
 
         );
     }
