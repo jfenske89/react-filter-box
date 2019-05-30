@@ -57,6 +57,10 @@ export default class FilterInput extends React.Component<any,any> {
     }
 
     handlePressingAnyCharacter() {
+        if (this.props.additionalCodeMirrorOptions && this.props.additionalCodeMirrorOptions.readOnly === true) {
+            return;
+        }
+
         if (this.autoCompletePopup.completionShow) {
             return;
         }
