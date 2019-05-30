@@ -57,7 +57,10 @@ export default class FilterInput extends React.Component<any,any> {
     }
 
     handlePressingAnyCharacter() {
-        if (this.props.additionalCodeMirrorOptions && this.props.additionalCodeMirrorOptions.readOnly === true) {
+        if (this.props.additionalCodeMirrorOptions &&
+          (this.props.additionalCodeMirrorOptions.readOnly === true ||
+            this.props.additionalCodeMirrorOptions.readOnly === 'nocursor')
+        ) {
             return;
         }
 
